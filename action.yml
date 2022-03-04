@@ -9,6 +9,9 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-id }}
+  input-to-js:
+    description: "Input to JS code"
+    value: ${{ steps.set-input-to-js.outputs.input-to-js }}
 runs:
   using: "composite"
   steps:
@@ -17,7 +20,19 @@ runs:
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
+    - id: set-input-to-js
+      run: echo "::set-output name=input-to-js::'hey! there JS'"
+      shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
     - run: goodbye.sh
+      shell: bash
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+    - name: run js code
+      working-directory: .
+      with:
+        input-to-js: ${{steps.set-input-to-js.outputs.input-to-js }}
+      run: npm ./dist/index.js
       shell: bash
