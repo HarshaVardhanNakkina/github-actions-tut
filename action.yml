@@ -31,6 +31,6 @@ runs:
     - uses: actions/setup-node@v2
       with:
         node-version: 16
-    - uses: ./js-action
+    - uses: js-action
       with:
         input-to-js: ${{ steps.set-input-to-js.outputs.input-to-js }}
