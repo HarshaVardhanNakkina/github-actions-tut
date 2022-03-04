@@ -15,6 +15,7 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/checkout@v2
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - id: random-number-generator
@@ -32,4 +33,4 @@ runs:
         node-version: 16
     - uses: ./js-action
       with:
-        input-to-js: ${{steps.set-input-to-js.outputs.input-to-js }}
+        input-to-js: ${{ steps.set-input-to-js.outputs.input-to-js }}
