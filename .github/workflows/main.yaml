@@ -11,4 +11,5 @@ jobs:
         with:
           who-to-greet: "Harsha"
       - name: Get the output item
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "The time was ${{ steps.hello.outputs.random-number }}"
+        shell: bash
