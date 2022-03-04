@@ -34,5 +34,5 @@ runs:
       working-directory: .
       with:
         input-to-js: ${{steps.set-input-to-js.outputs.input-to-js }}
-      run: npm ./dist/index.js
+      run: node ./dist/index.js
       shell: bash

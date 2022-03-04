@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: HarshaVardhanNakkina/github-actions-tut@v1.3
+        uses: HarshaVardhanNakkina/github-actions-tut@v1.5
         with:
           who-to-greet: "Harsha"
       - name: Get the output item
