@@ -33,5 +33,3 @@ runs:
     - uses: ./js-action
       with:
         input-to-js: ${{steps.set-input-to-js.outputs.input-to-js }}
-      run: node ./dist/index.js
-      shell: bash
