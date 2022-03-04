@@ -1,13 +1,10 @@
 name: "JavaScript Action"
 description: "Greet someone and record the time"
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  input-to-js: # id of input
+    description: "Input to JS code"
     required: true
     default: "World"
-outputs:
-  js-output: # id of output
-    description: "The time we greeted you"
 runs:
   using: "node16"
-  main: "index.js"
+  main: "./dist/index.js"
