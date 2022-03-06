@@ -4,7 +4,7 @@ inputs:
   posts-list:
     description: "List of posts"
     required: true
-    default: ""
+    default: "[]"
   repo-path:
     description: "root of the repo"
     required: true

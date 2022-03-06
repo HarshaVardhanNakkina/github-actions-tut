@@ -6,10 +6,8 @@ jobs:
     name: A job cross post blog posts
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: cross posting step
         id: hello
-        uses: HarshaVardhanNakkina/github-actions-tut@v2.4
+        uses: HarshaVardhanNakkina/github-actions-tut@v2.6
         with:
           posts-src: "./blog"
