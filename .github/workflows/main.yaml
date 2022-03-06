@@ -8,9 +8,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Hello world action step
         id: hello
-        uses: HarshaVardhanNakkina/github-actions-tut@v2.0
+        uses: HarshaVardhanNakkina/github-actions-tut@v2.1
         with:
-          who-to-greet: "Harsha"
-      - name: Get the output item
-        run: echo "The time was ${{ steps.hello.outputs.random-number }}"
-        shell: bash
+          posts-src: "./blog"
