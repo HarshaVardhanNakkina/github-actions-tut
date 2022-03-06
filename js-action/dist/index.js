@@ -1679,8 +1679,10 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(187);
 
 try {
-    const nameToGreet = core.getInput('input-to-js');
-    console.log(`input from composite action ${nameToGreet}!`);
+    const postsList = core.getInput('posts-list');
+    const repoPath = core.getInput('repo-path');
+    console.log(`added posts ${postsList}`);
+    console.log(`root of the repo ${repoPath}`);
 } catch (error) {
     core.setFailed(error.message);
 }

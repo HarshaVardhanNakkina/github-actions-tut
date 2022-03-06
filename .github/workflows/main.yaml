@@ -8,6 +8,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: cross posting step
         id: hello
-        uses: HarshaVardhanNakkina/github-actions-tut@v2.3
+        uses: HarshaVardhanNakkina/github-actions-tut@v2.4
         with:
           posts-src: "./blog"
