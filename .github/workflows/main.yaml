@@ -8,6 +8,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Hello world action step
         id: hello
-        uses: HarshaVardhanNakkina/github-actions-tut@v2.1
+        uses: HarshaVardhanNakkina/github-actions-tut@v2.2
         with:
           posts-src: "./blog"
