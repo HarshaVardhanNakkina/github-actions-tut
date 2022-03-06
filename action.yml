@@ -1,36 +1,26 @@
-name: "Composite Action"
-description: "Greet someone"
+name: "Imma Post"
+description: "post blog posts across different platforms"
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  posts-src: # id of input
+    description: "path to the posts folder (defaults to ./blog)"
     required: true
-    default: "World"
+    default: "./blog"
 outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }}
-  input-to-js:
-    description: "Input to JS code"
-    value: ${{ steps.set-input-to-js.outputs.input-to-js }}
+  posts-list:
+    description: "List of newly created posts"
+    value: ${{ steps.get-changes.outputs.posts-list }}
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v2
-    - run: echo Hello ${{ inputs.who-to-greet }}.
-      shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
-    - id: set-input-to-js
-      run: echo "::set-output name=input-to-js::'hey! there JS'"
-      shell: bash
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-    - run: goodbye.sh
-      shell: bash
-    - uses: actions/setup-node@v2
+    - name: checkout repository
+      uses: actions/checkout@v2
       with:
-        node-version: 16
+        fetch-depth: 0
+    - name: get changed files
+      id: get-changes
+      run: echo "::set-output name=posts-list::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+      shell: bash
     - uses: js-action
       with:
-        input-to-js: ${{ steps.set-input-to-js.outputs.input-to-js }}
+        posts-list: ${{ steps.get-changes.outputs.posts-list }}
+        repo-path: ${{ github.action_path }}

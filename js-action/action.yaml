@@ -1,10 +1,14 @@
 name: "JavaScript Action"
 description: "Greet someone and record the time"
 inputs:
-  input-to-js: # id of input
-    description: "Input to JS code"
+  posts-list:
+    description: "List of posts"
     required: true
-    default: "World"
+    default: ""
+  repo-path:
+    description: "root of the repo"
+    required: true
+    default: "."
 runs:
   using: "node16"
   main: "./dist/index.js"
