@@ -17,8 +17,8 @@ runs:
     - name: get changed files
       id: get-changes
       run: |
-        echo "::set-output name=posts-list::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
-        echo "$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+        echo "::set-output name=posts-list::$(git diff --name-only --diff-filter=ACRT ${{ github.event.before }}..${{ github.event.after }} | xargs)"
+        echo "$(git diff --name-only --diff-filter=ACRT ${{ github.event.before }}..${{ github.event.after }} | xargs)"
       shell: bash
     - uses: ./js-action
       with:
