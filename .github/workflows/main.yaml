@@ -1,4 +1,7 @@
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   corss_posting_job:
@@ -10,6 +13,6 @@ jobs:
           fetch-depth: 0
       - name: cross posting step
         id: hello
-        uses: HarshaVardhanNakkina/github-actions-tut@v2.7
+        uses: HarshaVardhanNakkina/github-actions-tut@v2.8
         with:
           posts-src: "./blog"
