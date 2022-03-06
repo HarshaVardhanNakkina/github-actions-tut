@@ -22,7 +22,7 @@ runs:
         echo "::set-output name=posts-list::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
         echo "$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
       shell: bash
-    - uses: js-action
+    - uses: ./js-action
       with:
-        posts-list: ""
+        posts-list: ${{ steps.get-changes.outputs.posts-list }}
         repo-path: ${{ github.action_path }}
